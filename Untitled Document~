@@ -1,0 +1,29 @@
+/* CSS declarations go here */
+.header{
+width:100%;
+height:40px;
+background-color:#ededed;
+border-bottom-style:solid;
+border-color:#d0c7c7;
+margin-left:auto;
+}
+.login-menu{
+float:right;
+margin-right:20px;
+margin-top:8px;
+}
+.heading-content{
+float:left;
+padding:0 20px;
+margin-top:8px;
+}
+.heading-content a{
+    padding-right:20px;
+    text-decoration:none;
+    font-size:16px;
+}
+#login-dropdown-list{
+position:relative;
+width:250px;
+height:250px;
+}

@@ -1,0 +1,73 @@
+<head>
+  <title>jobboard</title>
+</head>
+
+<body>
+<div class="header">
+    <div class="heading-content">
+        <a href="/">Jobboard</a>
+        <a href="{{postSubmitPath}}">PostJob</a>
+        <a href="{{samplePath}}">ClickHere</a>
+    </div>
+    <div class="login-menu">
+        {{loginButtons}}
+    </div>
+</div>
+
+    <div class="row-fluid">
+        {{renderPage}}
+    </div>
+</body>
+
+<template name="header">
+</template>
+<template name="login-menu">
+    {{loginButtons}}
+</template>
+<template name="sample">
+<div class="container">
+<form role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+    <button type="submit" id="subbutton" class="btn btn-default clickeve">Submit</button>
+</form> 
+</div> 
+</template>
+<template name="dataPage">
+
+</template>
+<!--<template name="postsList">
+    <div class="posts">
+        {{#each posts}}
+            {{> postItem}}
+        {{/each}}
+    </div>
+</template>
+<template name="postItem">
+    <div class="post">
+        <div class="post-content">
+            <h3><a href="{{url}}">{{url}}</a></h3>
+        </div>
+    </div>
+</template>
+<template name="postPage">
+    {{#with currentPost}}
+        {{> postItem}}
+    {{/with}}    
+</template>-->
+<!--<template name="postSubmit">
+    <form class="main">
+        <div class="control-group">
+            <label class="control-label" for="url">URL</label>
+                <div class="controls">
+                    <input name="url" type="text" value="" placeholder="Your URL"/>
+                </div>
+        </div>
+</template>-->
+

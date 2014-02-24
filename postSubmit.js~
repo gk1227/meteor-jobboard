@@ -1,0 +1,22 @@
+if (Meteor.isClient) {
+    Template.postSubmit.rendered = function(){
+        $('#summernote').summernote({
+            tabsize: 4,
+            height: 300,   //set editable area's height
+            focus: false,    //set focus editable area after Initialize summernote
+            toolbar: [
+                ['style', ['style']], // no style button
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['link', ]], // no insert buttons
+                //['table', ['table']], // no table button
+                ['view', ['fullscreen', 'codeview']],
+                ['help', ['help']], //no help button
+                //['code', ['code']],
+              ],
+        });
+    }
+}
