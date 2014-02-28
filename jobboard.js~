@@ -11,18 +11,18 @@ if (Meteor.isClient) {
 Meteor.Router.add({
 '/submit': 'postSubmit',
 '/click':'sample',
-'data':'dataPage'
+'display':'postDisplay'
 });
 
 Template.sample.events({
     "click button.clickeve": function (){
     console.log("event fired");
-   // var e_value=document.getElementById("exampleInputEmail1").value;
+   var e_value=document.getElementById("exampleInputEmail1").value;
+   var pwd = document.getElementByID("exampleInputPassword1").value
     Userdata.insert({
-        email: $(".form-control").val(),
-        password: $(".form-control").val()
-          //password: template.find(".password").val()
-    });
+        email : e_value,
+        password : pwd              
+        });
   } 
     /*Meteor.Router.to('dataPage', data);
     }*/

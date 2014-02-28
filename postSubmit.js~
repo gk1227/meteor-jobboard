@@ -1,22 +1,37 @@
 if (Meteor.isClient) {
     Template.postSubmit.rendered = function(){
-        $('#summernote').summernote({
-            tabsize: 4,
-            height: 300,   //set editable area's height
-            focus: false,    //set focus editable area after Initialize summernote
-            toolbar: [
-                ['style', ['style']], // no style button
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['insert', ['link', ]], // no insert buttons
-                //['table', ['table']], // no table button
-                ['view', ['fullscreen', 'codeview']],
-                ['help', ['help']], //no help button
-                //['code', ['code']],
-              ],
-        });
-    }
+        $('#jobDescription').wysihtml5();
+        $('#perksDescription').wysihtml5();
+    };
+    Template.postSubmit.events({
+        'click #submit': function(event){
+            var job = {};
+            job.jobtype = $('input[name="jobtype"]').val();
+            job.category = $('input[name="category"]').val();
+            job.location = $('input[name="location"]').val();
+            job.relocationAssistanceAvailable = $('input[name="relocationAssistanceAvailable"]')[0].checked;
+            job.description = $('#jobDescription').val();
+            job.jobPerks = $('#jobPerks')[0].checked;
+            if (job.jobPerks) {
+                job.perksDescription = $('#perksDescription').val();
+            } else {
+                job.perksDescription = null;
+            }
+            job.requiredDetails = $('textarea[name="requiredDetails"]').val();
+            job.companyName = $('input[name="companyName"]').val();
+            job.companyURL = $('input[name="companyURL"]').val();
+            job.companyEmail = $('input[name="companyEmail"]').val();
+            job.jobCollaborators = $('input[name="jobCollaborators"]').val();
+            job.recruiterOk = $('input[name="recruiterOk"]').val();
+            console.log(job);
+        },
+        'change #jobPerks': function(event){
+            //$('#perksDescription').show();
+            if($('#jobPerks')[0].checked){
+                $('#perksDescription').parent().show('slow');
+            } else {
+                $('#perksDescription').parent().hide('slow');
+            }
+        }
+    });
 }
