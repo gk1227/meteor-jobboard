@@ -12,6 +12,25 @@ float:right;
 margin-right:20px;
 margin-top:8px;
 }
+.jobpost
+{
+padding: 4px;
+margin-top: 20px;
+line-height: 1.428571429;
+background-color: #e2e1df;
+border: 1px solid #ddd;
+border-radius: 4px;
+transition: all .2s ease-in-out;
+}
+
+
+
+#inlinecss li
+{
+    display:inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
 .heading-content{
 float:left;
 padding:0 20px;
@@ -54,6 +73,12 @@ font-weight:bold;
 }
 
 
+  
+    #stickers > article {
+    /* Return them to document order */
+    -webkit-order: 0;
+            order: 0;
+  }
 
 
 
@@ -101,121 +126,8 @@ font-weight:bold;
 
 
 
-/*.content-container{
-background-color : #ebeae8;
-height:100%;
-padding:33px 0px;
-}
 
-.post-content {
-background: #fff;
-margin:0px 200px 0px 200px;
-/*margin-top:20px;*/
-/*height : 500px;*//*
-}*/
-/*.controls{
-border:1px solid #d0c7c7;
-padding-left:30px;
-}
-.controls h2{
-color :#8171ab;
-font-size :27px;
-}
-.control {
-height : 2000px;
-}
-.control p {
-    margin : 6px 0px 0px 94px;
-}
 
-.control #job_type {
-    list-style :none;
-    padding-left :85px;
-    font-size : 20px;
-    margin-top:13px;
-    margin-bottom:7px;
-}
-.control #job_category{
-    margin-top:20px;
-    list-style : none;
-    font-size : 20px;
-    padding-left :85px;
-}
-.control-checkbox{
-    margin : 10px 0px 0px 88px;
-    font-size : 18px;
-}
-.control-checkbox1{
-    margin : 15px 0px 0px 0px;
-    font-size : 18px;
-}
-.control #company_name{
-    margin : 10px 0px 0px 48px;
-    font-size : 28px;
-}
-.control #confirmation{
-    list-style : none;
-    font-weight : bold;
-    font-size : 20px;
-    color : #444455;
-}
-.post-subhead{
-display:inline;  
-color : #444455; 
-font-size:20px;
-font-weight:bold; 
-}
-.post-subhead2{
-color : #444455; 
-font-size:18px;
-font-weight : bold;
-margin-top : 15px;
-}
-.post-subhead label{
-    float : left ;
-    margin-top: 10px;
-}
-.note {
-    margin-top : 17px;
-}
-.subhead_bold{
-    font-weight : bold;
-    color:#444455;
-    font-size : 20px;
-}
-#job_headline{
-    clear : both;
-    margin-left : 20px;
-    width : 700px;
-    color: #fff;
-    height : 35px;
-    color : #444455; 
-    font-size:20px;
-    font-weight:bold;
-}
-margin:18px 0px;
-}
-.submit_head span{
-    font-weight:bold;
-    
-}
-.post-desc p{
-display :inline;
-font-size:18px;
-}
-.job_desc{
-clear : both;
-padding-top:5px;
-}
-.richtext-tinymce{
-height : 400px;
-width : 950px;
-}
-.richtext-tinymce2{
-height : 150px;
-margin-top :10px;
-width : 950px;
-}*/
 
 
 
