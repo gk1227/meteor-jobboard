@@ -46,6 +46,12 @@ position:relative;
 width:250px;
 height:230px;
 }
+.container
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .container-fluid{
     background-color : #ebeae8;
 }
@@ -73,17 +79,27 @@ font-weight:bold;
 }
 
 
-  
-    #stickers > article {
-    /* Return them to document order */
-    -webkit-order: 0;
-            order: 0;
-  }
+.sticker , .sticker h4, .sticker h6
+{
+    background:#3e9cbf;
+    font: bold 18px Oswald, sans-serif;
+    color:#fff;
+}
 
+.sticker a 
+{
+    color:#fff;
+}
 
+.sticker a : hover
+{
+    color:#fff;
+}
 
-
-
+.padtop
+{
+    padding-top: 15px;
+}
 
 
 

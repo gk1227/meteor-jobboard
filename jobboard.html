@@ -2,8 +2,8 @@
     <div class="header">
         <div class="heading-content">
             <a href="/">Jobboard</a>
-            <a href="{{postSubmitPath}}">PostJob</a>
-            <a href="{{samplePath}}">ClickHere</a>
+            <a href="{{pathFor 'postSubmit'}}">PostJob</a>
+            <a href="{{pathFor 'sample'}}">ClickHere</a>
         </div>
         <div class="login-menu">
             {{loginButtons}}
@@ -16,18 +16,9 @@
     </head>
 
     <body>
-        <div class="header">
-            <div class="heading-content">
-                <a href="/">Jobboard</a>
-                <a href="{{pathFor 'postSubmit'}}">PostJob</a>
-                <a href="{{pathFor 'sample'}}">ClickHere</a>
-            </div>
-            <div class="login-menu">
-                {{loginButtons}}
-            </div>
-        </div>
+       {{> header}}
 
-        <div class="row-fluid">
+        <div class="row-fluid padtop">
             <!-- {{renderPage}} -->
             {{> postDisplay}}
            </div>
@@ -51,26 +42,15 @@
     </form> 
     </div> 
 </template>
-<!--<template name="postDisplay">
-    <div id='stickers'>
-    {{#each Job}}
-    <article>
-         <h1><b>{{J_Headline}}</b></h1> 
-          <h4>{{J_Location}}</h4>
-          <h4>{{J_Companyname}}</h4>
-          <a href="www.google.com">google</a>
-    </article>
-    {{/each}}
-     </div>
- 
-</template>-->
+
 <template name="postDisplay">
     <div class="container">
         {{#each Job}}
-        <div class="col-lg-3 thumbnail col-md-6 col-xs-12" style="background:#BBB;">
+        <div class="col-lg-3 thumbnail col-md-6 col-xs-12 sticker" >
             <h4>{{J_Companyname}}</h4>
             <h4>{{J_Headline}}</h4>
             <h4>{{J_Location}}</h4>
+            <h6 class="sticker" align="right"> <a href="{{pathFor 'jobPage'}}">View More</a></h6>
         </div>
         {{/each}}
     </div>

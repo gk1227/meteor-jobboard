@@ -1,5 +1,6 @@
 
 <template name="postSubmit">
+
 {{> header}}
 <div class="container-fluid">
     <div class="container">
@@ -9,6 +10,7 @@
         </div><!--*******submit-head ends ****-->
         <h2>First, tell us about the position</h2>
             <!-- <form class="form form-horizontal" role="form"> -->
+            <form  id="myform">
                 <div class="form-group">
                     <label for="Headline" class="col-sm-2 control-label">Headline</label>
                     <div class="col-sm-10">
@@ -16,38 +18,38 @@
                         <p>A single-line summary. This goes to the front page and across the network</p>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="type" class="col-sm-2 control-label">Type</label>
                     <div class="col-sm-10">
                         <div class="radio">
-                          <label>
-                            <input type="radio" name="jobtype" value="Full-time employment">
-                            Full-time employment
-                          </label>
+                             Full-time employment
+                             <input id="type" type="radio" name="jobtype" value="Full-time employment">
+                         
                         </div>
                         <div class="radio">
-                          <label>
-                            <input type="radio" name="jobtype" value="Short-term contract">
+                          
                             Short-term contract
-                          </label>
+                            <input id="type" type="radio" name="jobtype" value="Short-term contract">
+                          
                         </div>
                         <div class="radio">
-                          <label>
-                            <input type="radio" name="jobtype" value="Freelance or consulting">
+                          
                             Freelance or consulting
-                          </label>
+                            <input id="type" type="radio" name="jobtype" value="Freelance or consulting">
+                          
                         </div>
                         <div class="radio">
-                          <label>
-                            <input type="radio" name="jobtype" value="Volunteer contributor">
+                          
                             Volunteer contributor
-                          </label>
+                            <input id="type" type="radio" name="jobtype" value="Volunteer contributor">
+                          
                         </div>
                         <div class="radio">
-                          <label>
-                            <input type="radio" name="jobtype" value="Partner for a venture">
+                         
                             Partner for a venture
-                          </label>
+                            <input id="type" type="radio" name="jobtype" value="Partner for a venture">
+                          
                         </div>
                     </div>
                 </div>
@@ -55,55 +57,36 @@
                    <label for="Category" class="col-sm-2 control-label">Category</label>
                    <div class="col-sm-10">
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Programming">Programming
-                            </label>
+                            
+                                <input type="radio" id="Category" name="category" value="Programming">Programming
                         </div>
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Interation Design">Interation Design
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Interation Design">Interation Design
                         </div>
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Graphic Design">Graphic Design
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Graphic Design">Graphic Design
                         </div>
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Testing">Testing
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Testing">Testing
                         </div>
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Systems Administration">Systems Administration
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Systems Administration">Systems Administration
                         </div>
                         <div class="radio">
-                            <label>
-                                <input type="radio" name="category" value="Business Management">Business Management
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Business Management">Business Management
                         </div>
                         <div class="radio"> 
-                            <label>    
-                                <input type="radio" name="category"  value="Writer/Editor">Writer/Editor
-                            </label>
+                                    <input type="radio" id="Category" name="category"  value="Writer/Editor">Writer/Editor
                         </div>    
                         <div class="radio"> 
-                            <label>        
-                                <input type="radio" name="category"  value="Customer Supportt">Customer Support
-                            </label>    
+                                        <input type="radio" id="Category" name="category"  value="Customer Supportt">Customer Support
                         </div>    
                         <div class="radio"> 
-                            <label>    
-                                <input type="radio" name="category"  value="Mobile (iPhone, Android, other)">
+                                    <input type="radio" id="Category" name="category"  value="Mobile (iPhone, Android, other)">
                                 Mobile (iPhone, Android, other)
-                            </label>
                         </div>    
                         <div class="radio"> 
-                            <label>
-                                <input type="radio" name="category" value="Office Administration">Office Administration
-                            </label>
+                                <input type="radio" id="Category" name="category" value="Office Administration">Office Administration
                         </div>
                     </div>
                 </div>
@@ -116,32 +99,32 @@
                     </div>
                     <div class="col-sm-offset-2 col-sm-10">
                        <div class="checkbox">
-                            <label>
+                            
                                 <input type="checkbox" name="relocationAssistanceAvailable" value=true> 
                                     Relocation assistance available
-                            </label>
+                            
                        </div>
                     </div>
                 </div>      
                 <div class="form-group">
                     <label for="Description" class="col-sm-2 control-label">Description</label>      
                     <div class="col-sm-10">
-                        <textarea class="form-control" id ="jobDescription" name="jobDescription"></textarea>  
+                        <textarea class="form-control" id ="Description" name="jobDescription"></textarea>  
                         <span class="help-block">
                             Don’t just describe the job, tell a compelling story for why someone should work for you
                         </span>
                     </div>
-                 </div><!--***form-group ends***-->
-                <!-- <textarea class="form-control" rows="3"></textarea>     -->
+                 </div>
+                
                 <div class="form-group"> 
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">
-                            <label>
-                                <input id="jobPerks" type="checkbox" name="jobPerks" value=true> Job perks are available
-                            </label>    
+                            
+                                <input id="jobPerks" type="checkbox" name="jobPerks" value=true> <label for="jobPerks">Job perks are available</label>
                         </div>
                         <div class="col-sm-10" style="display:none;">
-                            <textarea class="form-control" id="perksDescription" name="perksDescription"></textarea>
+                        <label for="perksDesc" class="col-sm-2 control-label">Perk Description</label>
+                            <textarea class="form-control" id="perksDesc" name="perksDescription"></textarea>
                         </div>
                     </div>
                 </div>
@@ -150,9 +133,9 @@
              
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <label for="Description" class="col-sm-2 control-label">Required details</label>    
+                        <label for="requiredDetails" class="col-sm-2 control-label">Required details</label>    
                         <div class="col-sm-10">
-                            <textarea class="form-control " rows="6" name="requiredDetails"></textarea>
+                            <textarea class="form-control" id="requiredDetails" rows="6" name="requiredDetails"></textarea>
                             <span class="help-block">
                                 Example: “Include your LinkedIn and GitHub profiles.” 
                                 We now require candidates to apply through the job board only. 
@@ -220,10 +203,11 @@
                     <span>Warning:</span><span class="text-warning">Many recruiters will ignore your preference and contact you anyway. Do not reveal your phone number in the listing. If you receive an email, please report it and we will block their account.</span>              
                 </div>
                 <div class="form-group">
-                    <button id="preview" type="button" class="btn btn-primary formpreview" >Preview</button>
+                    <input id="preview" type="submit" value="Preview" class="btn btn-primary formpreview" >
                     <button id="submit" type="button" class="btn btn-primary formsubmit">Post Job</button>
                 </div>        
             </div><!--*****submit-sec2 ends****-->
+        </form>
         </div><!--****container ends ****-->    
     </div>
 
