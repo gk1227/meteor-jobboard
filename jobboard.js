@@ -8,13 +8,16 @@ Router.map(function(){
     this.route('jobboard',{path:'/'})
     this.route('postSubmit', {path: '/submit' });
     this.route('sample', {path:'/click/'});
-    this.route('jobPage',
-        {path:'/jobPage/:_id',
-        data:  function(){
-                
-                return Jobs.findOne({_id:this.params._id});
-    }
-        });
+    this.route('jobPage', {path:'/jobPage'}/*,
+        data: function(){
+                _id: this.params._id;
+                templateData ={
+                    _id: _id,
+                    title: this.J_Headline,
+                }
+                return Jobs.findOne({_id: this.params._id});
+            }
+        }*/);
 });
 
 
@@ -90,9 +93,9 @@ if (Meteor.isClient) {
                 Jobs.insert({J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,
                              J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
                              J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
-                             J_Companyname : companyName, J_CompanyURL:companyURL, J_RecruiterOk:recruiterOk,createdAt:c_time,owner:u_id,version:1},function(e,r)
+                             J_Companyname:companyName, J_CompanyURL:companyURL, J_RecruiterOk:recruiterOk,createdAt:c_time,owner:u_id,version:1},function(e,r)
                              {
-                                alert(r);
+                                alert("Data inserted");
                                 Router.go('jobPage', {_id: r});
                              });  
                   

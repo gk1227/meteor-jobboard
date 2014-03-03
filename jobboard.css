@@ -100,7 +100,14 @@ font-weight:bold;
 {
     padding-top: 15px;
 }
-
+ 
+.jobDetailHead, .jobDetailBody{
+    padding-left :30px;
+}
+ 
+.jobDetailApply{
+    padding-left :30px;
+}
 
 
 

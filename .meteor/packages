@@ -8,8 +8,8 @@ preserve-inputs
 accounts-ui
 accounts-password
 bootstrap3-wysihtml5
-coffeescript
-iron-router
-less
 bootstrap-3
 jquery
+iron-router
+coffeescript
+less
