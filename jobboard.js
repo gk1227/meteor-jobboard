@@ -2,6 +2,8 @@ Jobs = new Meteor.Collection('jobs');
 Userdata=new Meteor.Collection('userdata');
 Job_Data=new Meteor.Collection('jobdata');
 
+var _deps = new Deps.Dependency;
+var searchCriteria = {};
 
 
 
@@ -37,8 +39,43 @@ if (Meteor.isClient) {
             Meteor.subscribe('Jobs');
         });
     });
+
+    function serachJob(){
+
+        var search_text=document.getElementById('serachText').value;
+        var search = new RegExp(search_text, 'i');
+        
+        searchCriteria = {'J_Headline': search};
+        _deps.changed();
+
+        
+    }
     
-    
+    Template.jobboard.events({
+        'click #searchboxClick':function(){
+            console.log("click event triggered")
+            serachJob();
+
+        },
+        'keypress input.enterEve':function(evt){
+            if(evt.which===13)
+            {
+                console.log("Enter event triggered")
+                serachJob();
+            }
+        },
+        'keyup #serachText':function(){
+
+                var s_txt=document.getElementById('serachText').value;
+                console.log("focus event");
+                if(s_txt==="")
+                {
+                    searchCriteria={};
+                    _deps.changed();
+                }
+        }
+
+    })
     Template.postSubmit.events({
         'click .formsubmit': function(event){
             if(Meteor.user())
@@ -163,11 +200,15 @@ if (Meteor.isClient) {
     
     Template.postDisplay.helpers({
         Job:function(){
-           var jobs= Jobs.find({},{sort: {createdAt: -1}}).fetch();
+
+             _deps.depend();            
+
+           var jobs= Jobs.find(searchCriteria,{sort: {createdAt: -1}}).fetch();
+          
            Session.set("length",jobs.length);
             var start=Session.get("start");
             var end=Session.get("end");
-           return jobs.slice(start,end);
+            return jobs.slice(start,end);
         }
 
     });  
@@ -244,6 +285,15 @@ if (Meteor.isClient) {
             }
         
         });  
+
+        Template.editJob.helpers({
+            setValues:function(){
+                    var aa=this.J_Jobtype;
+                    console.log(this.J_Jobtype);
+                    // $('input[name="jobtype"][value="Full-time employment"]').attr('checked', true);
+
+            }
+        })
 }
 
 
