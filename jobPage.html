@@ -1,31 +1,33 @@
 <template name="jobPage">
-	{{> header}}
-    <div class="container-fluid">
-    	<div class="container"> 
-    		<div class="jobDetailHead">
-				<h1>title</h1>
-				<p class="help-block">Posted February 26, 2014 by @sunilurs (~sunilurs)</p>
-				<h4>Company Name here</h4>
-				<h4>Location</h4>
-				<h5>Company URL</h5>
-				<h5>TypeOfJob	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	Category</h5>
-			</div>
-			<hr>
-			<div class="jobDetailBody">
-				<p>Entire job description</p>
-				<p>Job requirements</p>
-				<p>Job Perks</p>
-			</div>
-			<hr>	
-			<div class="jobDetailApply">
-				<h3>Apply for this position</h3>
-				<p>
-					<button type="button" class="btn btn-primary btn-xs">Show Instructions</button>
-				</p>
-			</div>
-			<hr>
-			<h4>It is NOT OK for recruiters, HR consultants, and other intermediaries to contact this employer.</h4>	
-        </div>
-    </div>    
+    
+        {{> header}}
+     <div class="container-fluid">
+     	<div class="container"> 
+     		<div class="jobDetailHead">
+ 				<h1>{{this.J_Headline}}</h1>
+ 				<p class="help-block">Posted February 26, 2014 by @sunilurs (~sunilurs)</p>
+ 				<h4>{{J_Companyname}}</h4>
+ 				<h4>{{this.J_Location}}</h4>
+ 				<h5>{{J_CompanyURL}}</h5>
+ 				<h5>{{this.J_Jobtype}}	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	{{J_Category}}</h5>
+ 			</div>
+ 			<hr>
+ 			<div class="jobDetailBody">
+				<p>{{J_Description}}</p>
+ 				<p>{{J_Reqdetails}}</p>
+ 				<p>{{J_Perksdesc}}</p>
+ 			</div>
+ 			<hr>	
+ 			<div class="jobDetailApply">
+ 				<h3>Apply for this position</h3>
+ 				<p>
+ 					<button type="button" class="btn btn-primary btn-xs">Show Instructions</button>
+ 				</p>
+ 			</div>
+ 			<hr>
+ 			<h4>It is {{J_RecruiterOk}} for recruiters, HR consultants, and other intermediaries to contact this employer.</h4>	
+         </div>
+     </div>    
+        
 </template>
 

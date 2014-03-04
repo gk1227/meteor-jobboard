@@ -1,5 +1,4 @@
-<template name="postSubmit">
-
+<template name="editJob">
 {{> header}}
 <div class="container-fluid">
     <div class="container">
@@ -13,7 +12,7 @@
                 <div class="form-group">
                     <label for="Headline" class="col-sm-2 control-label">Headline</label>
                     <div class="col-sm-10">
-                        <input type="Headline" class="form-control" id="Headline" name ="jobHeadline" placeholder="Awesome coder wanted for an awesome company">
+                        <input type="Headline" class="form-control" id="Headline" name ="jobHeadline" value="{{this.J_Headline}}" >
                         <p>A single-line summary. This goes to the front page and across the network</p>
                     </div>
                 </div>
@@ -94,7 +93,7 @@
                         Location
                     </label>
                     <div class="col-sm-10">
-                        <input type="Location" class="form-control" id="Location" name="location" placeholder="Bangalore, Chennai, Pune,...">
+                        <input type="Location" class="form-control" id="Location" name="location" value="{{this.J_Location}}" placeholder="Bangalore, Chennai, Pune,...">
                     </div>
                     <div class="col-sm-offset-2 col-sm-10">
                        <div class="checkbox">
@@ -108,7 +107,7 @@
                 <div class="form-group">
                     <label for="Description" class="col-sm-2 control-label">Description</label>      
                     <div class="col-sm-10">
-                        <textarea class="form-control" id ="Description" name="jobDescription"></textarea>  
+                        <textarea class="form-control" id ="Description" name="jobDescription">{{this.J_Description}}</textarea>  
                         <span class="help-block">
                             Don’t just describe the job, tell a compelling story for why someone should work for you
                         </span>
@@ -134,7 +133,7 @@
                     <div class="col-sm-12">
                         <label for="requiredDetails" class="col-sm-2 control-label">Required details</label>    
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="requiredDetails" rows="6" name="requiredDetails"></textarea>
+                            <textarea class="form-control" id="requiredDetails" rows="6"  name="requiredDetails">{{this.Reqdetails}}</textarea>
                             <span class="help-block">
                                 Example: “Include your LinkedIn and GitHub profiles.” 
                                 We now require candidates to apply through the job board only. 
@@ -150,7 +149,7 @@
                 <div class="form-group">
                     <label for="Name" class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="Name" class="form-control" id="Name" name ="companyName" placeholder="Your Company Name here">
+                            <input type="Name" class="form-control" id="Name" name ="companyName" value="{{this.J_Companyname}}" placeholder="Your Company Name here">
                             <p class="help-block">The name of the organization where the position is. No intermediaries or unnamed stealth startups. Use your own real name if the company isn’t named yet. We do not accept listings from third parties such as recruitment consultants. Such listings may be removed without notice.</p>
                         </div>
                 </div>
@@ -158,14 +157,14 @@
                 <div class="form-group">
                     <label for="URL" class="col-sm-2 control-label">URL</label>
                     <div class="col-sm-10">
-                        <input type="URL" class="form-control" id="URL" name = "companyURL" placeholder="">    
+                        <input type="URL" class="form-control" id="URL" name = "companyURL" value="{{this.CompanyURL}}">    
                         <p class="help-block">Example: http://www.redesygn.com</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" name = "companyEmail"placeholder="User id to be rendered here">    
+                        <input type="email" class="form-control" id="inputEmail3" value="{{this.J_CompanyEmail}}" name = "companyEmail"placeholder="User id to be rendered here">    
                         <p class="help-block">This is where we’ll send your confirmation email and all job applications. We recommend using a shared email address such as jobs@your-company.com. Listings are classified by your email domain. Your email address will not be revealed to applicants until you respond</p>
                     </div>
                 </div>
@@ -173,23 +172,23 @@
                 <div class="form-group">
                     <label for="Collaborators" class="col-sm-2 control-label" >Collaborators</label>
                     <div class="col-sm-10">
-                        <input type="Collaborators" class="form-control" id="Collaborators" name = "jobCollaborators" placeholder="">
+                        <input type="Collaborators" class="form-control" id="Collaborators" value="{{this.J_Collaborator}}" name = "jobCollaborators" placeholder="">
                         <p class="help-block">If someone is helping you evaluate candidates, type their names here. They must have a HasGeek account. They will not receive email notifications — use a shared email address above for that — but they will be able to respond to candidates who apply</p>
                         <p class="text-info">Only you, will be able to respond to candidates. To allow others to respond, add them as a collaborator.</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="okayorno">Is it okay for recruiters and other intermediaries to contact you about this listing?</h4>
+                    <h4>Is it okay for recruiters and other intermediaries to contact you about this listing?</h4>
                     <div class="radio">
-                        
-                            <input type="radio" id="okayorno" name="recruiterOk" value="NOT OK" checked><b>No, it is NOT OK</b>
-                        
+                        <label>
+                            <input type="radio" name="recruiterOk" value="NOT OK" checked><b>No, it is NOT OK</b>
+                        </label>
                     </div>
                     <div class="radio">
-                        
-                            <input type="radio" id="okayorno" name="recruiterOk"  value="yes" >Yes, recruiters may contact me
+                        <label>
+                            <input type="radio" name="recruiterOk"  value="yes" >Yes, recruiters may contact me
                             <span class="help-block">We’ll display a notice to this effect on the listing</span>
-                        
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -197,7 +196,7 @@
                 </div>
                 <div class="form-group">
                     <input id="preview" type="submit" value="Preview" class="btn btn-primary formpreview" >
-                    <button id="submit" type="button" class="btn btn-primary formsubmit">Post Job</button>
+                    <button id="submit" type="button" class="btn btn-primary formsubmit">Update Job</button>
                 </div>        
             </div><!--*****submit-sec2 ends****-->
         </form>
