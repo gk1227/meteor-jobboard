@@ -114,12 +114,15 @@ if (Meteor.isClient) {
                 else
                 {
                 //saving date
-                var dat=new Date();                
+                var dat=new Date(); 
+                var date=dat.getDate()              ;
+                var month=dat.getMonth();
+                var year=dat.getFullYear();               
                 Jobs.insert({J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,
                              J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
                              J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
                              J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
-                             J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk,createdAt:dat,owner:u_id,version:1},function(e,r)
+                             J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk,createdAt:dat,J_Date:date,J_Month:month,J_Year:year,owner:u_id,version:1},function(e,r)
                              {
                                 alert(r);
                                 Router.go('jobPage', {_id: r});
@@ -243,6 +246,7 @@ if (Meteor.isClient) {
                 companyEmail = $('input[name="companyEmail"]').val();
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
+
                 
                 if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
                 {
@@ -250,8 +254,6 @@ if (Meteor.isClient) {
                 }
                 else
                 {
-                //saving date
-                var dat=new Date();                
                 Jobs.update({_id:this._id},{$set:{J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,
                              J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
                              J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
