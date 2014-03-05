@@ -60,7 +60,7 @@
                                 <input type="radio" id="Category" name="category" value="Programming">Programming
                         </div>
                         <div class="radio">
-                                <input type="radio" id="Category" name="category" value="Interation Design">Interation Design
+                                <input type="radio" id="Category" name="category" value="Interaction Design">Interation Design
                         </div>
                         <div class="radio">
                                 <input type="radio" id="Category" name="category" value="Graphic Design">Graphic Design
@@ -90,6 +90,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="Experience" class="col-sm-2 control-label">
+                        Experience
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="Experience" class="form-control" id="Experience" name="Experience" placeholder="0-2 yrs">
+                        <span class="help-block">
+                            "0-2 yrs", "0-18 months", "5+ yrs" (without quotes)
+                        </span>
+                    </div>
+                </div>    
+                <div class="form-group">
                     <label for="Location" class="col-sm-2 control-label">
                         Location
                     </label>
@@ -108,7 +119,7 @@
                 <div class="form-group">
                     <label for="Description" class="col-sm-2 control-label">Description</label>      
                     <div class="col-sm-10">
-                        <textarea class="form-control" id ="Description" name="jobDescription"></textarea>  
+                        <textarea class="form-control" id ="jobDescription" name="jobDescription"></textarea>  
                         <span class="help-block">
                             Don’t just describe the job, tell a compelling story for why someone should work for you
                         </span>
@@ -122,8 +133,8 @@
                                 <input id="jobPerks" type="checkbox" name="jobPerks" value=true> <label for="jobPerks">Job perks are available</label>
                         </div>
                         <div class="col-sm-10" style="display:none;">
-                        <label for="perksDesc" class="col-sm-2 control-label">Perk Description</label>
-                            <textarea class="form-control" id="perksDesc" name="perksDescription"></textarea>
+                        <label for="perksDesc" class="col-sm-2 control-label">Job Perks</label>
+                            <textarea class="form-control" id="perksDescription" name="perksDescription"></textarea>
                         </div>
                     </div>
                 </div>
