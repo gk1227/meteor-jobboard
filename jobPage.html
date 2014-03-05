@@ -5,23 +5,28 @@
      	<div class="container"> 
      		<div class="jobDetailHead">
  				<h1>{{this.J_Headline}}</h1>
- 				<p class="help-block">Posted {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
- 				<h4>{{J_Companyname}}</h4>
- 				<h4>{{this.J_Location}}</h4>
- 				<a href= <h5>{{J_CompanyURL}}</h5></a>
- 				<h5><b><u>Job Type</u> : </b>{{this.J_Jobtype}}	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	<b><u>Job Category</u> : </b>{{J_Category}}</h5>
+ 				<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
+ 				<h5><b>Company Name     :</b>    {{J_Companyname}}</h5>
+ 				<h5><b>Experience     :</b>    {{J_Experience}}</h5>
+ 				<h5><b>Job Location     :</b>    {{this.J_Location}}</h5>
+ 				<h5><b>Website  :</b> <a target="_blank" href= <h5>{{J_CompanyURL}}</h5></a></h5>
+ 				<h5><b>Job Type 		: </b>   {{this.J_Jobtype}}</h5>
+ 				<h5><b>Job Category</u> : </b>{{J_Category}}</h5>
  			</div>
  			<hr>
  			<div class="jobDetailBody">
-				<p>{{J_Description}}</p>
- 				<p>{{J_Reqdetails}}</p>
- 				<p>{{J_Perksdesc}}</p>
+				<h5><b>Job Description:</b></h5>
+				<p class="desc">{{J_Description}}</p>
+				<h5><b>Required Details:</b></h5>
+ 				<p class="desc">{{J_Reqdetails}}</p>
+ 				<h5><b>Perks Description:</b></h5>
+ 				<p class="desc">{{J_Perksdesc}}</p>
  			</div>
  			<hr>	
  			<div class="jobDetailApply">
  				<h3>Apply for this position</h3>
  				<p>
- 					<button type="button" class="btn btn-primary btn-xs">Show Instructions</button>
+ 					<button type="button" class="btn btn-primary btn-xs" onclick="location.href ='{{J_CompanyURL}}'">Show Instructions</button>
  				</p>
  			</div>
  			<hr>

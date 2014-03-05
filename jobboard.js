@@ -51,8 +51,9 @@ if (Meteor.isClient) {
         
     }
     
-    Template.jobboard.events({
+    Template.header.events({
         'click #searchboxClick':function(){
+            Router.go("jobboard");
             console.log("click event triggered")
             serachJob();
 
@@ -60,6 +61,7 @@ if (Meteor.isClient) {
         'keypress input.enterEve':function(evt){
             if(evt.which===13)
             {
+                Router.go("jobboard");
                 console.log("Enter event triggered")
                 serachJob();
             }
@@ -93,7 +95,7 @@ if (Meteor.isClient) {
                 
                 relocationAssistanceAvailable = $('input[name="relocationAssistanceAvailable"]')[0].checked;
                 
-                jobdescription = $('#Description').val();
+                jobdescription = $('#jobDescription').val();
                 console.log(jobdescription);
                 
                 jobPerks = $('#jobPerks')[0].checked;
@@ -127,7 +129,7 @@ if (Meteor.isClient) {
                              J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
                              J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk,createdAt:dat,J_Date:date,J_Month:month,J_Year:year,owner:u_id,version:1},function(e,r)
                              {
-                                alert(r);
+                                
                                 Router.go('jobPage', {_id: r});
                              });  
                   
@@ -236,7 +238,7 @@ if (Meteor.isClient) {
                 
                 relocationAssistanceAvailable = $('input[name="relocationAssistanceAvailable"]')[0].checked;
                 
-                jobdescription = $('#Description').val();
+                jobdescription = $('#jobDescription').val();
                 console.log(jobdescription);
                 
                 jobPerks = $('#jobPerks')[0].checked;

@@ -33,6 +33,11 @@ transition: all .2s ease-in-out;
     float:right;
 }
 
+.desc
+{
+    padding-left: 5%;
+}
+
 #inlinecss li
 {
     display:inline;
