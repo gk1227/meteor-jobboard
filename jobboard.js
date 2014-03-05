@@ -86,6 +86,8 @@ if (Meteor.isClient) {
                 jobtype = $('input[name ="jobtype"]:checked').val();
                 
                 category = $('input[name="category"]:checked').val();
+
+                jobexperience = $('input[name="Experience"]').val();
                 
                 joblocation = $('input[name="location"]').val();
                 
@@ -114,11 +116,12 @@ if (Meteor.isClient) {
                 else
                 {
                 //saving date
+                var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May","June","July", "Aug", "Sep", "Oct", "Nov", "Dec" ];
                 var dat=new Date(); 
                 var date=dat.getDate()              ;
-                var month=dat.getMonth();
+                var month=monthNames[dat.getMonth()];
                 var year=dat.getFullYear();               
-                Jobs.insert({J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,
+                Jobs.insert({J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,J_Experience:jobexperience,
                              J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
                              J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
                              J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
@@ -226,6 +229,8 @@ if (Meteor.isClient) {
                 jobtype = $('input[name ="jobtype"]:checked').val();
                 
                 category = $('input[name="category"]:checked').val();
+
+                jobexperience = $('input[name="Experience"]').val();
                 
                 joblocation = $('input[name="location"]').val();
                 
@@ -254,7 +259,7 @@ if (Meteor.isClient) {
                 }
                 else
                 {
-                Jobs.update({_id:this._id},{$set:{J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,
+                Jobs.update({_id:this._id},{$set:{J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,J_Experience:jobexperience,
                              J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
                              J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
                              J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
@@ -272,19 +277,18 @@ if (Meteor.isClient) {
             alert("login to post the Job")
           }
         },
-        'click .formpreview': function(event){
-                    console.log("before plugin");
-                    $('#myform').previewForm();
-                    
-        },
-           
         'change #jobPerks': function(event){
             if($('#jobPerks')[0].checked){
                 $('#perksDescription').parent().show('slow');
             } else {
                 $('#perksDescription').parent().hide('slow');
                     }
-            }
+            },
+        'click .formpreview': function(event){
+                    console.log("before plugin");
+                    $('#myform').previewForm();
+        }           
+        
         
         });  
 
