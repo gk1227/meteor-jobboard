@@ -11,6 +11,10 @@ margin-left:auto;
 float:right;
 margin-right:20px;
 margin-top:8px;
+
+}
+#login-buttons{
+    z-index: -1;
 }
 .navbar-form {
     margin-top:1px;
@@ -97,6 +101,8 @@ font-weight:bold;
     background:#3e9cbf;
     font: bold 18px Oswald, sans-serif;
     color:#fff;
+    
+    
 }
 
 .sticker a 
@@ -112,6 +118,13 @@ font-weight:bold;
 .padtop
 {
     padding-top: 15px;
+    padding-left: 5%;
+    position: absolute;
+}
+
+.poabs
+{
+    position: absolute;
 }
  
 .jobDetailHead, .jobDetailBody{

@@ -6,10 +6,9 @@ var _deps = new Deps.Dependency;
 var searchCriteria = {};
 
 
-
 Router.map(function(){
 
-    this.route('jobboard',{path:'/'})
+    this.route('jobboard',{path:'/'});
     this.route('postSubmit', {path: '/submit' });
     this.route('editPosts', {path:'/editPosts/'});
     this.route('editJob',{path:'/editJob/:_id',
