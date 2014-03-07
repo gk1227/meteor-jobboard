@@ -39,6 +39,8 @@ if (Meteor.isClient) {
         });
     });
 
+    
+
     function serachJob(){
 
         var search_text=document.getElementById('serachText').value;
@@ -81,6 +83,8 @@ if (Meteor.isClient) {
         'click .formsubmit': function(event){
             if(Meteor.user())
             {
+                if(Meteor.user().emails[0].verified)
+                {
                 var u_id=Meteor.userId();
                 jobHeadline = $('input[name ="jobHeadline"]').val();
                 
@@ -134,6 +138,15 @@ if (Meteor.isClient) {
                   
               }
           }
+          else{
+            var uid=Meteor.userId();
+            Meteor.call('sendEmail',uid); 
+            console.log(Meteor.userId());
+            
+           
+            alert("Your accounts is not verified Yet");
+          }
+          }
           else
           {
             alert("login to post the Job")
@@ -169,6 +182,17 @@ if (Meteor.isClient) {
         $('#perksDescription').wysihtml5();
     };
    
+   Template.jobPage.helpers({
+       'fbshare': function () {
+    console.log("Click event triggered");
+    var shared_url = encodeURIComponent(window.location.toString() + "?_escaped_fragment_=");
+    var service_url="https://www.facebook.com/sharer/sharer.php?u=";
+    var string =  service_url + shared_url ;
+    console.log(string);
+    // window.location=string;
+    return string;
+   }
+   });
    
 
    Template.postDisplay.events({
@@ -252,7 +276,6 @@ if (Meteor.isClient) {
                 companyEmail = $('input[name="companyEmail"]').val();
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
-
                 
                 if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
                 {
@@ -297,14 +320,30 @@ if (Meteor.isClient) {
             setValues:function(){
                     var aa=this.J_Jobtype;
                     console.log(this.J_Jobtype);
-                    // $('input[name="jobtype"][value="Full-time employment"]').attr('checked', true);
-
             }
         })
 }
 
 
 if (Meteor.isServer) {
+
+    Meteor.startup(function(){
+        
+       process.env.MAIL_URL = 'smtp://postmaster%40sandbox22840.mailgun.org:redesygnsystems@smtp.mailgun.org:587';
+    
+    });
+     Accounts.config({
+             sendVerificationEmail:true
+         });
+
+
+    Meteor.methods({
+            sendEmail: function (uid) {
+                  Accounts.sendVerificationEmail(uid);          
+                    
+                     
+    }
+    });
    
      Meteor.publish("Jobs", function (){
         return Jobs.find({});
@@ -322,5 +361,6 @@ if (Meteor.isServer) {
         }
             
      });
-      
 }
+
+
