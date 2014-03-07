@@ -2,11 +2,15 @@
     
 
         {{> header}}
-     <div class="container-fluid poabs">
+     <div class="container-fluid">
      	<div class="container"> 
      		<div class="jobDetailHead">
+     		<div id="social-share">
+     			{{social-share '["facebook", "twitter"]'}}
+     		</div>	
 			<h1>{{this.J_Headline}}</h1>
 			<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
+			
 			<!-- {{social-share '["twitter"]'}}?_escaped_fragment_
 			
 			<a type="button" id="fbshare"  target="_blank" href="'{{fbshare}}'">FB Share</a>

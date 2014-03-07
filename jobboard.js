@@ -152,20 +152,22 @@ if (Meteor.isClient) {
             alert("login to post the Job")
           }
         },
+
+        'change #jobPerks': function(event){
+            //$('#perksDescription').show();
+        if($('#jobPerks')[0].checked){
+            $('#perksDescription').parent().show('slow');
+        } else {
+            $('#perksDescription').parent().hide('slow');
+                }
+        },
         'click .formpreview': function(event){
                     console.log("before plugin");
                     $('#myform').previewForm();
                     
-        },
+        }
            
-        'change #jobPerks': function(event){
-            //$('#perksDescription').show();
-            if($('#jobPerks')[0].checked){
-                $('#perksDescription').parent().show('slow');
-            } else {
-                $('#perksDescription').parent().hide('slow');
-                    }
-            }
+
         
         
     });

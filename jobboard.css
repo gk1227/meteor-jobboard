@@ -56,11 +56,11 @@ margin-top:8px;
     text-decoration:none;
     font-size:16px;
 }
-/* #login-dropdown-list{
+ #login-dropdown-list{
 position:relative;
 width:250px;
 height:230px;
-} */
+} 
 .container
 {
     padding-left: 0px;
@@ -72,6 +72,7 @@ height:230px;
 }
 .container{
     background-color : #fff;
+    margin-right:50px;
 }
 .container h1{    
     color : #df5e0e;
@@ -92,7 +93,11 @@ border-bottom: 1px solid #ebeae8;
 font-size:16px;
 font-weight:bold;
 }
-
+#social-share{
+    float:right;
+    position:relative;
+    margin-right:20px;
+}
 
 .sticker , .sticker h4, .sticker h6
 {
@@ -116,13 +121,14 @@ font-weight:bold;
 .padtop
 {
     padding-top: 15px;
-    padding-left: 5%;
+    /*padding-left: 5%;*/
     position: absolute;
+    margin:0px 50px 0px 50px;
 }
 
 .poabs
 {
-    position: absolute;
+    position: relative;
 }
  
 .jobDetailHead, .jobDetailBody{
