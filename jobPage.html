@@ -2,11 +2,17 @@
     
 
         {{> header}}
-     <div class="container-fluid poabs">
+     <div class="container-fluid">
      	<div class="container"> 
      		<div class="jobDetailHead">
+     		
+     		<div id="social-share">
+     			{{social-share '["facebook", "twitter"]'}}
+     		</div>	
+     		
 			<h1>{{this.J_Headline}}</h1>
 			<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
+			
 			<!-- {{social-share '["twitter"]'}}?_escaped_fragment_
 			
 			<a type="button" id="fbshare"  target="_blank" href="'{{fbshare}}'">FB Share</a>
@@ -25,7 +31,7 @@
  			<hr>
  			<div class="jobDetailBody">
 				<h5><b>Job Description:</b></h5>
-				<p class="desc">{{J_Description}}</p>
+				{{J_Description}}
 				<h5><b>Required Details:</b></h5>
  				<p class="desc">{{J_Reqdetails}}</p>
  				<h5><b>Perks Description:</b></h5>

@@ -40,7 +40,6 @@ if (Meteor.isClient) {
     });
 
     
-
     function serachJob(){
 
         var search_text=document.getElementById('serachText').value;
@@ -152,20 +151,22 @@ if (Meteor.isClient) {
             alert("login to post the Job")
           }
         },
+
+        'change #jobPerks': function(event){
+            //$('#perksDescription').show();
+        if($('#jobPerks')[0].checked){
+            $('#perksDescription').parent().show('slow');
+        } else {
+            $('#perksDescription').parent().hide('slow');
+                }
+        },
         'click .formpreview': function(event){
                     console.log("before plugin");
                     $('#myform').previewForm();
                     
-        },
+        }
            
-        'change #jobPerks': function(event){
-            //$('#perksDescription').show();
-            if($('#jobPerks')[0].checked){
-                $('#perksDescription').parent().show('slow');
-            } else {
-                $('#perksDescription').parent().hide('slow');
-                    }
-            }
+
         
         
     });
@@ -340,11 +341,11 @@ if (Meteor.isServer) {
     Meteor.methods({
             sendEmail: function (uid) {
                   Accounts.sendVerificationEmail(uid);          
-                    
-                     
-    }
+        }
     });
    
+    Meteor.absoluteUrl.defaultOptions.rootUrl = "http://localhost:3000/jobPage"
+
      Meteor.publish("Jobs", function (){
         return Jobs.find({});
     });
