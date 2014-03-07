@@ -40,7 +40,6 @@ if (Meteor.isClient) {
     });
 
     
-
     function serachJob(){
 
         var search_text=document.getElementById('serachText').value;
@@ -342,11 +341,11 @@ if (Meteor.isServer) {
     Meteor.methods({
             sendEmail: function (uid) {
                   Accounts.sendVerificationEmail(uid);          
-                    
-                     
-    }
+        }
     });
    
+    Meteor.absoluteUrl.defaultOptions.rootUrl = "http://localhost:3000/jobPage"
+
      Meteor.publish("Jobs", function (){
         return Jobs.find({});
     });
