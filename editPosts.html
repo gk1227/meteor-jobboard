@@ -1,14 +1,14 @@
 <template name="editPosts">
 {{> header}}
 <h3>Jobs posted By You</h3>
-    <div class="container poabs">
-    <table width="100%">
+    <div class="container poabs padleft">
+    <table width="100%"     >
     
         {{#each posts}}
         
         <tr>  
-        	<td width="50%"> <a href="{{pathFor 'jobPage'}}"><b> {{J_Headline}}</b></a></td>
-           	<td style="padding-left:50%" align="right"> <a href="{{pathFor 'editJob'}}" ><b> EDIT</b></a></td>
+        	<td  width="50%"> <a href="{{pathFor 'jobPage'}}"><b> {{J_Headline}}</b></a></td>
+           	<td  align="center"> <a href="{{pathFor 'editJob'}}" ><b> EDIT</b></a></td>
         </tr>
         {{/each}}
         

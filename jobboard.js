@@ -112,6 +112,9 @@ if (Meteor.isClient) {
                 companyEmail = $('input[name="companyEmail"]').val();
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
+
+                if(companyURL.indexOf("http") != -1)
+                {
                 
                 if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
                 {
@@ -137,8 +140,13 @@ if (Meteor.isClient) {
                   
               }
           }
+          else
+          {
+            alert("Email must contain http:// or https://");
+          }
+          }
           else{
-            var uid=Meteor.userId();
+            var uid=Meteor.userId;
             Meteor.call('sendEmail',uid); 
             console.log(Meteor.userId());
             
@@ -240,10 +248,28 @@ if (Meteor.isClient) {
            Session.set("length",jobs.length);
             var start=Session.get("start");
             var end=Session.get("end");
+            for (var i = 0; i <Session.get("length"); i++)
+             {
+               var headline=jobs[i].J_Headline;
+               var edithead=headline.slice(0,30);
+                jobs[i].J_Headline=edithead;
+
+                var compname=jobs[i].J_Companyname;
+               var editcname=compname.slice(0,30);
+                jobs[i].J_Companyname=editcname;
+            }
+            
             return jobs.slice(start,end);
+        },
+    
+        panelColor:function(){
+            var clasPanel=['panel-success','panel-info','panel-danger','panel-primary','panel-warning','panel-pink'];
+            var rand = clasPanel[Math.floor(Math.random() * clasPanel.length)];
+            return rand;
         }
 
     });  
+    
     Template.editJob.events({
         'click .formsubmit': function(event){
             if(Meteor.user())
@@ -277,6 +303,9 @@ if (Meteor.isClient) {
                 companyEmail = $('input[name="companyEmail"]').val();
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
+
+                if(companyURL.indexOf("http") != -1)
+                {
                 
                 if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
                 {
@@ -296,6 +325,11 @@ if (Meteor.isClient) {
                 
                 
                 }
+            }
+            else
+            {
+                alert("Email must contain http:// or https://")
+            }
          }
           else
           {
@@ -331,21 +365,24 @@ if (Meteor.isServer) {
     Meteor.startup(function(){
         
        process.env.MAIL_URL = 'smtp://postmaster%40sandbox22840.mailgun.org:redesygnsystems@smtp.mailgun.org:587';
+       Accounts.emailTemplates.from = "Redesygn Systems <info@redesygn.com>";
     
     });
-     Accounts.config({
-             sendVerificationEmail:true
-         });
+   
+    Accounts.config({
+       sendVerificationEmail:true
 
+    });
 
     Meteor.methods({
-            sendEmail: function (uid) {
-                  Accounts.sendVerificationEmail(uid);          
+            sendEmail: function (to) {
+                 
+         Accounts.sendVerificationEmail(to);
+                          
         }
     });
    
-    Meteor.absoluteUrl.defaultOptions.rootUrl = "http://localhost:3000/jobPage"
-
+    
      Meteor.publish("Jobs", function (){
         return Jobs.find({});
     });
@@ -363,5 +400,3 @@ if (Meteor.isServer) {
             
      });
 }
-
-

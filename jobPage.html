@@ -13,25 +13,20 @@
 			<h1>{{this.J_Headline}}</h1>
 			<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
 			
-			<!-- {{social-share '["twitter"]'}}?_escaped_fragment_
 			
-			<a type="button" id="fbshare"  target="_blank" href="'{{fbshare}}'">FB Share</a>
-			<a href="https://www.facebook.com" target="_blank">
-			 Share on Facebook
-			</a> -->
 
 			<h5><b>Company Name     :</b>    {{J_Companyname}}</h5>
 			<h5><b>Email     :</b>    {{this.J_CompanyEmail}}</h5>
 			<h5><b>Experience     :</b>    {{J_Experience}}</h5>
 			<h5><b>Job Location     :</b>    {{this.J_Location}}</h5>
-			<h5><b>Website  :</b> <a target="_blank" href= <h5>{{J_CompanyURL}}</h5></a></h5>
+			<h5><b>Website  :</b> <a target="_blank" href= "{{J_CompanyURL}}">{{J_CompanyURL}}</a></h5>
 			<h5><b>Job Type 		: </b>   {{this.J_Jobtype}}</h5>
 			<h5><b>Job Category</u> : </b>{{J_Category}}</h5>
  		</div>
  			<hr>
  			<div class="jobDetailBody">
 				<h5><b>Job Description:</b></h5>
-				{{J_Description}}
+				<p class="desc">{{J_Description}}</p>
 				<h5><b>Required Details:</b></h5>
  				<p class="desc">{{J_Reqdetails}}</p>
  				<h5><b>Perks Description:</b></h5>
@@ -41,7 +36,7 @@
  			<div class="jobDetailApply">
  				<h3>Apply for this position</h3>
  				<p>
- 				<button type="button" class="btn btn-primary btn-xs" onclick="location.href ='{{J_CompanyURL}}'">Show Instructions</button>
+ 				<a target="_blank" href="{{J_CompanyURL}}"><button type="button" class="btn btn-primary btn-xs" >Show Instructions</button></a>
  				</p>
  			</div>
  			<hr>

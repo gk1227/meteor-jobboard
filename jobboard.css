@@ -14,6 +14,74 @@ margin-top:8px;
 
 }
 
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.padleft
+{
+    margin-left: 7%%;
+    margin-right: 17%;
+}
+.panel-body
+{
+   margin-top: -15px;
+}
+/*Panel Background Colors*/
+.panel-pink {
+border-color: #CA4278;
+}
+.panel-pink>.panel-heading {
+color: #fff;
+background-color: #CA4278;
+border-color: #CA4278;
+}
+
+ .panel-success
+{
+    border-color: #3c763d;
+}
+.panel-success > .panel-heading {
+color: #fff;
+background-color: #3c763d;
+border-color: #3c763d;
+}
+
+.panel-warning
+{
+    border-color: #8a6d3b;
+}
+.panel-warning > .panel-heading {
+color: #fff;
+background-color: #8a6d3b;
+border-color: #8a6d3b;
+}
+
+.panel-danger
+{
+    border-color: #a94442;
+}
+.panel-danger > .panel-heading {
+color: #fff;
+background-color: #a94442;
+border-color: #a94442;
+}
+
+.panel-info
+{
+    border-color: #31708f;
+}
+.panel-info > .panel-heading {
+color: #fff;
+background-color: #31708f;
+border-color: #31708f;
+}
+
 .navbar-form {
     margin-top:1px;
 }
@@ -57,7 +125,7 @@ margin-top:8px;
     font-size:16px;
 }
  #login-dropdown-list{
-position:relative;
+position:absolute;
 width:250px;
 height:230px;
 } 
@@ -65,15 +133,16 @@ height:230px;
 {
     padding-left: 0px;
     padding-right: 0px;
+    
 }
 
 .container-fluid{
     background-color : #ebeae8;
 }
-.container{
-    background-color : #fff;
+ .containers{
+    background-color : #000;
     margin-right:50px;
-}
+} 
 .container h1{    
     color : #df5e0e;
 }
@@ -128,7 +197,7 @@ font-weight:bold;
 
 .poabs
 {
-    position: relative;
+    position: absolute;
 }
  
 .jobDetailHead, .jobDetailBody{
