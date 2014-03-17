@@ -13,16 +13,14 @@ Router.map(function(){
     this.route('editPosts', {path:'/editPosts/'});
     this.route('editJob',{path:'/editJob/:_id',
             data:  function(){
-                
                 return Jobs.findOne({_id:this.params._id});
-    }
-    })
+            }
+        })
     this.route('jobPage',
         {path:'/jobPage/:_id',
         data:  function(){
-                
                 return Jobs.findOne({_id:this.params._id});
-    }
+            }
         });
 });
 
@@ -37,18 +35,23 @@ if (Meteor.isClient) {
         {
             Meteor.subscribe('Jobs');
         });
-    });
 
-    
+        /*EasySearch.createSearchIndex('jobs', {
+            'collection'    : Jobs,         // instanceof Meteor.Collection
+            'field'         : 'J_Headline',  // can also be an array of fields
+            'limit'         : 20,           // default: 10
+            });
+        });*/
+    });
+            
     function serachJob(){
 
         var search_text=document.getElementById('serachText').value;
+        console.log(search_text);
         var search = new RegExp(search_text, 'i');
-        
+        console.log(search);
         searchCriteria = {'J_Headline': search};
         _deps.changed();
-
-        
     }
     
     Template.header.events({
@@ -69,15 +72,19 @@ if (Meteor.isClient) {
         'keyup #serachText':function(){
 
                 var s_txt=document.getElementById('serachText').value;
-                console.log("focus event");
-                if(s_txt==="")
-                {
-                    searchCriteria={};
-                    _deps.changed();
-                }
+                //console.log("focus event");
+                console.log(s_txt);
+                    /*if(s_txt==="")
+                    {
+                        searchCriteria={};
+                        _deps.changed();
+                    }
+                    else{
+                        searchJob();
+                    }*/
         }
 
-    })
+    });
     Template.postSubmit.events({
         'click .formsubmit': function(event){
             if(Meteor.user())
@@ -98,7 +105,7 @@ if (Meteor.isClient) {
                 relocationAssistanceAvailable = $('input[name="relocationAssistanceAvailable"]')[0].checked;
                 
                 jobdescription = $('#jobDescription').val();
-                console.log(jobdescription);
+                //console.log(jobdescription);
                 
                 jobPerks = $('#jobPerks')[0].checked;
                 if (jobPerks) {
@@ -113,11 +120,45 @@ if (Meteor.isClient) {
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
 
+                    /*jQuery.validator.setDefaults({
+                    debug: true,
+                    success: "valid"        
+                    });
+                    var form = $( "#myform" );
+                    form.validate();
+                    $( "button" ).click(function() {
+                      alert( "Valid: " + form.valid() );
+                    });*/
+                    var formx = $( "#myform input:blank" );
+                    //formxlen = formx.length;
+                    /*for(var i=0; i< formx.length;i++){
+                        $( "formx input:blank" ).css( "border", "3px solid red" );
+                    }*/
+                    function valfunction(){
+                    if(jobHeadline==="")
+                        $( "#Headline" ).css( "border", "1px solid red" );                    
+                    if(jobexperience==="")
+                        $( "#Experience" ).css( "border", "1px solid red" );
+                    if(joblocation==="")
+                        $( "#Location" ).css( "border", "1px solid red" );
+                    if(jobdescription==="")
+                        $( "#jobDescription" ).css( "border", "1px solid red" );
+                    if(companyName==="")
+                        $( "#Name" ).css( "border", "1px solid red" );
+                    if(companyURL==="")
+                        $( "#URL" ).css( "border", "1px solid red" );
+                    if(companyEmail==="")
+                        $( "#inputEmail3" ).css( "border", "1px solid red" );
+                    }
+                    valfunction.call()
+                    
+
                 if(companyURL.indexOf("http") != -1)
                 {
                 
                 if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
                 {
+
                     alert("you need to fill all the details")
                 }
                 else
@@ -142,7 +183,7 @@ if (Meteor.isClient) {
           }
           else
           {
-            alert("Email must contain http:// or https://");
+            alert("URL must contain http:// or https://");
           }
           }
           else{
@@ -171,12 +212,7 @@ if (Meteor.isClient) {
         'click .formpreview': function(event){
                     console.log("before plugin");
                     $('#myform').previewForm();
-                    
-        }
-           
-
-        
-        
+                }
     });
     
     Template.editPosts.helpers({
@@ -189,6 +225,7 @@ if (Meteor.isClient) {
     Template.postSubmit.rendered = function(){
         $('#jobDescription').wysihtml5();
         $('#perksDescription').wysihtml5();
+        //$("#myfrom").validate();
     };
    
    Template.jobPage.helpers({
@@ -292,11 +329,11 @@ if (Meteor.isClient) {
                 console.log(jobdescription);
                 
                 jobPerks = $('#jobPerks')[0].checked;
-                if (jobPerks) {
-                    perksDescription = $('#perksDescription').val();
-                } else {
-                    perksDescription = null;
-                }
+                    if (jobPerks) {
+                        perksDescription = $('#perksDescription').val();
+                    } else {
+                        perksDescription = null;
+                    }
                 requiredDetails = $('textarea[name="requiredDetails"]').val();
                 companyName = $('input[name="companyName"]').val();
                 companyURL = $('input[name="companyURL"]').val();
@@ -304,61 +341,64 @@ if (Meteor.isClient) {
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
 
-                if(companyURL.indexOf("http") != -1)
-                {
-                
-                if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
-                {
-                    alert("you need to fill all the details")
-                }
-                else
-                {
-                Jobs.update({_id:this._id},{$set:{J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,J_Experience:jobexperience,
-                             J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
-                             J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
-                             J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
-                             J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk}},function(e,r)
-                             {
-                                alert("Updated Successfully");
-                             });
-                            Router.go("jobPage",{_id:this._id})
-                
-                
-                }
-            }
-            else
-            {
-                alert("Email must contain http:// or https://")
-            }
-         }
-          else
-          {
-            alert("login to post the Job")
-          }
-        },
-        'change #jobPerks': function(event){
-            if($('#jobPerks')[0].checked){
-                $('#perksDescription').parent().show('slow');
-            } else {
-                $('#perksDescription').parent().hide('slow');
-                    }
-            },
-        'click .formpreview': function(event){
-                    console.log("before plugin");
-                    $('#myform').previewForm();
-        }           
-        
-        
-        });  
+                jQuery.validator.setDefaults({
+                    debug: true,
+                    success: "valid"
+                });
+                $( "input:blank" ).css( "background-color", "#bbbbff" );
 
-        Template.editJob.helpers({
-            setValues:function(){
-                    var aa=this.J_Jobtype;
-                    console.log(this.J_Jobtype);
+                    if(companyURL.indexOf("http") != -1)
+                    {
+                    
+                        if(jobHeadline==="" || jobtype==="" || category==="" || joblocation==="" || relocationAssistanceAvailable=== "" || jobdescription=== "" || jobPerks==="" || requiredDetails==="" || companyURL==="" || companyName==="" || companyEmail==="")
+                        {
+                            alert("you need to fill all the details")
+                        }
+                        else
+                        {
+                        Jobs.update({_id:this._id},{$set:{J_Headline:jobHeadline,J_Jobtype:jobtype,J_Category:category,J_Experience:jobexperience,
+                                     J_Location:joblocation,J_RelAssAvail:relocationAssistanceAvailable,
+                                     J_Description:jobdescription,J_Perksdesc:perksDescription,J_Reqdetails:requiredDetails,
+                                     J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
+                                     J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk}},function(e,r)
+                                     {
+                                        alert("Updated Successfully");
+                                     });
+                                    Router.go("jobPage",{_id:this._id})
+                        }
+                    }//if*****
+                    else
+                    {
+                        alert("Email must contain http:// or https://")
+                    }
+            }//***Meteor if User
+        else
+            {
+                alert("login to post the Job");
             }
-        })
+        },
+            'change #jobPerks': function(event){
+                if($('#jobPerks')[0].checked){
+                    $('#perksDescription').parent().show('slow');
+                } else {
+                    $('#perksDescription').parent().hide('slow');
+                        }
+                },//**
+            'click .formpreview': function(event){
+                        console.log("before plugin");
+                        $('#myform').previewForm();
+                }//**   
+    });  
+
+    Template.editJob.helpers({
+        setValues:function(){
+            var aa=this.J_Jobtype;
+                console.log(this.J_Jobtype);
+            }
+    });
 }
 
+/************************Client Ends***********************************************************/
 
 if (Meteor.isServer) {
 
@@ -366,37 +406,41 @@ if (Meteor.isServer) {
         
        process.env.MAIL_URL = 'smtp://postmaster%40sandbox22840.mailgun.org:redesygnsystems@smtp.mailgun.org:587';
        Accounts.emailTemplates.from = "Redesygn Systems <info@redesygn.com>";
+
+      /* EasySearch.createSearchIndex('jobs', {
+        'collection'    : Jobs,         // instanceof Meteor.Collection
+        'field'         : 'J_Headline', // can also be an array of fields
+        'limit'         : 20,           // default: 10
+        });*/
     
     });
-   
+
     Accounts.config({
        sendVerificationEmail:true
 
     });
 
     Meteor.methods({
-            sendEmail: function (to) {
+        sendEmail: function (to) {
                  
-         Accounts.sendVerificationEmail(to);
-                          
+        Accounts.sendVerificationEmail(to);
         }
     });
    
     
-     Meteor.publish("Jobs", function (){
+    Meteor.publish("Jobs", function (){
         return Jobs.find({});
     });
      
-     Jobs.allow
-     ({
-        insert: function(UserId, Jobs)
-        {
-               return true;
-        },
-        update: function()
-        {
-               return true;
-        }
-            
-     });
+    Jobs.allow
+        ({
+            insert: function(UserId, Jobs)
+            {
+                   return true;
+            },
+            update: function()
+            {
+                   return true;
+            }
+        });
 }

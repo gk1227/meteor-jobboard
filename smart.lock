@@ -5,7 +5,9 @@
       "bootstrap-3": {},
       "bootstrap3-wysihtml5": {},
       "iron-router": {},
-      "social-share": {}
+      "social-share": {},
+      "jquery-validation": {},
+      "easy-search": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -27,6 +29,16 @@
         "git": "https://github.com/andi-bute/social-share-meteor.git",
         "tag": "v0.0.1",
         "commit": "79d9577dc28f8c5251cf85aa0bb5cfd2a3bcdd52"
+      },
+      "jquery-validation": {
+        "git": "https://github.com/properapp/jquery-validation.git",
+        "tag": "v1.0.0",
+        "commit": "afce6a53368c4f35f3bd82d92572312db68ecbb7"
+      },
+      "easy-search": {
+        "git": "https://github.com/matteodem/meteor-easy-search.git",
+        "tag": "v0.3.0",
+        "commit": "ea7d32140c267a2ddc9890578b8ad6516589b7b9"
       }
     }
   }

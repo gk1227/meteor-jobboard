@@ -1,18 +1,21 @@
 /* CSS declarations go here */
-.header{
+/*.header{
 width:100%;
 height:40px;
-background-color:#ededed;
-border-bottom-style:solid;
-border-color:#d0c7c7;
+/*background-color:#ededed;*/
+/*border-bottom-style:solid;*/
+/*border-color:#d0c7c7;
 margin-left:auto;
-}
-.login-menu{
+}*/
+/*.login-menu{
 float:right;
 margin-right:20px;
 margin-top:8px;
-
+}*/
+.navbar{
+    margin-bottom:0px;
 }
+
 
 table {
     border-collapse: collapse;
@@ -83,7 +86,7 @@ border-color: #31708f;
 }
 
 .navbar-form {
-    margin-top:1px;
+    margin-top:6px;
 }
 .navbar-form .btn-default{
    maring-align:  left;
@@ -101,6 +104,7 @@ transition: all .2s ease-in-out;
 
 .col-lg-3 .exp{
     float:right;
+    margin-top:2px;
 }
 
 .desc
@@ -114,7 +118,7 @@ transition: all .2s ease-in-out;
     list-style-type: none;
     padding-right: 20px;
 }
-.heading-content{
+/*.heading-content{
 float:left;
 padding:0 20px;
 margin-top:8px;
@@ -123,7 +127,8 @@ margin-top:8px;
     padding-right:20px;
     text-decoration:none;
     font-size:16px;
-}
+    color:#fff;
+}*/
  #login-dropdown-list{
 position:absolute;
 width:250px;
@@ -136,9 +141,9 @@ height:230px;
     
 }
 
-.container-fluid{
+/*.container-fluid{
     background-color : #ebeae8;
-}
+}*/
  .containers{
     background-color : #000;
     margin-right:50px;
@@ -207,9 +212,9 @@ font-weight:bold;
 .jobDetailApply{
     padding-left :30px;
 }
-
-
-
+.hidden {
+  display:none;
+}
 
 
 

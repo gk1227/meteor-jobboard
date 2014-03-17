@@ -3,6 +3,8 @@
     "bootstrap-3": {},
     "bootstrap3-wysihtml5": {},
     "iron-router": {},
-    "social-share": {}
+    "social-share": {},
+    "jquery-validation": {},
+    "easy-search": {}
   }
 }
