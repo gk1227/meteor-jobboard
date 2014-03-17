@@ -1,20 +1,4 @@
 /* CSS declarations go here */
-/*.header{
-width:100%;
-height:40px;
-/*background-color:#ededed;*/
-/*border-bottom-style:solid;*/
-/*border-color:#d0c7c7;
-margin-left:auto;
-}*/
-/*.login-menu{
-float:right;
-margin-right:20px;
-margin-top:8px;
-}*/
-.navbar{
-    margin-bottom:0px;
-}
 
 
 table {
@@ -28,7 +12,7 @@ td {
 
 .padleft
 {
-    margin-left: 7%%;
+    margin-left: 7%;
     margin-right: 17%;
 }
 .panel-body
@@ -138,12 +122,13 @@ height:230px;
 {
     padding-left: 0px;
     padding-right: 0px;
+
     
 }
 
-/*.container-fluid{
+.container-fluid{
     background-color : #ebeae8;
-}*/
+}
  .containers{
     background-color : #000;
     margin-right:50px;
@@ -170,7 +155,7 @@ font-weight:bold;
 #social-share{
     float:right;
     position:relative;
-    margin-right:20px;
+    margin:70px 20px 0px 0px;
 }
 
 .sticker , .sticker h4, .sticker h6
@@ -197,7 +182,7 @@ font-weight:bold;
     padding-top: 15px;
     /*padding-left: 5%;*/
     position: absolute;
-    margin:0px 50px 0px 50px;
+    margin:50px 50px 0px 125px;
 }
 
 .poabs
