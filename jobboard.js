@@ -72,14 +72,14 @@ if (Meteor.isClient) {
                 var s_txt=document.getElementById('serachText').value;
                 //console.log("focus event");
                 console.log(s_txt);
-                    /*if(s_txt==="")
+                if(s_txt==="")
                     {
                         searchCriteria={};
                         _deps.changed();
                     }
                     else{
                         searchJob();
-                    }*/
+                    }
         }
 
     });
