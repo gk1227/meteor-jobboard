@@ -15,18 +15,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{pathFor 'postSubmit'}}">PostJob</a></li>
+            <li><a href="{{pathFor 'postSubmit'}}">PostJob</a></li>
             <li>{{#if currentUser}}
                   <a href="{{pathFor 'editPosts'}}">Edit Posts</a>
                 {{/if}}
             </li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <div class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" id="serachText" class="form-control enterEve" placeholder="Search">
             </div>
             <button type="button" id="searchboxClick" class="btn btn-default">Go!</button>
-          </form>
+          </div>
           <ul class="nav navbar-nav navbar-right">
             <!--<div class="login-menu">-->
             <li class="dropdown">
@@ -39,6 +39,7 @@
         
     </div>
 </template>
+
 <template name="jobboard">
     <head>
       <title>jobboard</title>
@@ -59,7 +60,7 @@
 
 <template name="postDisplay">
 
-  
+  {{#if hasJobs}}
     <div class="container">
         {{#each Job}}
        <div class="col-lg-3  col-md-6 col-xs-12 " >
@@ -76,14 +77,21 @@
             </div>
       </div>
      {{/each}}
+     {{else}}
+          <h4 align="center">There are no Jobs posted yet.</h4>
        </div>
+     
      </div> 
+  {{/if}}
 
+
+{{#if hasPosts}}
 <div>
     <ul class="pager">
           <li class="previous" id="prevButton" ><a href="#">&larr; Previous</a></li>
           <li class="next" id="nextButton" ><a href="#">Next &rarr;</a></li>
     </ul>
 </div>
+{{/if}}
 </template>
 

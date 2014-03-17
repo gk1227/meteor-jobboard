@@ -1,6 +1,4 @@
 Jobs = new Meteor.Collection('jobs');
-Userdata=new Meteor.Collection('userdata');
-Job_Data=new Meteor.Collection('jobdata');
 
 var _deps = new Deps.Dependency;
 var searchCriteria = {};
@@ -49,8 +47,8 @@ if (Meteor.isClient) {
         var search_text=document.getElementById('serachText').value;
         console.log(search_text);
         var search = new RegExp(search_text, 'i');
-        console.log(search);
-        searchCriteria = {'J_Headline': search};
+        // searchCriteria = {'J_Headline': search};
+        searchCriteria={ $or: [{ J_Headline: search },{ J_Location:search  }] };
         _deps.changed();
     }
     
@@ -74,14 +72,14 @@ if (Meteor.isClient) {
                 var s_txt=document.getElementById('serachText').value;
                 //console.log("focus event");
                 console.log(s_txt);
-                    /*if(s_txt==="")
+                if(s_txt==="")
                     {
                         searchCriteria={};
                         _deps.changed();
                     }
                     else{
                         searchJob();
-                    }*/
+                    }
         }
 
     });
@@ -303,6 +301,28 @@ if (Meteor.isClient) {
             var clasPanel=['panel-success','panel-info','panel-danger','panel-primary','panel-warning','panel-pink'];
             var rand = clasPanel[Math.floor(Math.random() * clasPanel.length)];
             return rand;
+        },
+        hasPosts:function(){
+            var noPosts=Jobs.find({}).count();
+            if(noPosts>20)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        },
+        hasJobs:function(){
+            var noJobs=Jobs.find({}).count();
+            if(noJobs===0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     });  
