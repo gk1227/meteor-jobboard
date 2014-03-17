@@ -38,7 +38,7 @@
 
 <template name="postDisplay">
 
-  
+  {{#if hasJobs}}
     <div class="container">
         {{#each Job}}
        <div class="col-lg-3  col-md-6 col-xs-12 " >
@@ -55,15 +55,22 @@
             </div>
       </div>
      {{/each}}
+     {{else}}
+          <h4 align="center">There are no Jobs posted yet.</h4>
        </div>
+     
      </div> 
+  {{/if}}
 
+
+{{#if hasPosts}}
 <div>
     <ul class="pager">
           <li class="previous" id="prevButton" ><a href="#">&larr; Previous</a></li>
           <li class="next" id="nextButton" ><a href="#">Next &rarr;</a></li>
     </ul>
 </div>
+{{/if}}
 </template>
 
 
