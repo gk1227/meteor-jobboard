@@ -47,14 +47,8 @@ if (Meteor.isClient) {
         var search_text=document.getElementById('serachText').value;
         console.log(search_text);
         var search = new RegExp(search_text, 'i');
-<<<<<<< HEAD
-        
         // searchCriteria = {'J_Headline': search};
         searchCriteria={ $or: [{ J_Headline: search },{ J_Location:search  }] };
-=======
-        console.log(search);
-        searchCriteria = {'J_Headline': search};
->>>>>>> ed1299ba98e3684e38eb9a2e0b54a149461f32b9
         _deps.changed();
     }
     
