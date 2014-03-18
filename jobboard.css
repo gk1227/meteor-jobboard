@@ -217,6 +217,22 @@ font-weight:bold;
 }
 
 
+.clear_field {
+    display: inline-block;
+    border: 1px inset;
+    background-color: white;
+}
+
+.clear_field input {
+    border: none;
+    padding-left: 1px;
+}
+
+.clear_field button {
+    border: none;
+    background: none;
+}
+
 
 
 

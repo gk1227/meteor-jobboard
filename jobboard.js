@@ -80,6 +80,11 @@ if (Meteor.isClient) {
                     else{
                         searchJob();
                     }
+        },
+        'click #clearField':function(){
+            document.getElementById('serachText').value="";
+            searchCriteria={};
+             _deps.changed();
         }
 
     });
