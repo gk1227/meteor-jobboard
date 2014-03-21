@@ -459,7 +459,7 @@ if (Meteor.isServer) {
         sendRepoEmail: function (jobid) {
                 var textm="this"+jobid+ "job is reported as fake";
         Email.send({
-                to: "dronavalli.sasi@gmail.com",
+                to: "sasi@redesygn.com",
                 from: "info@redesygn.com",
                 subject: "Fake Job in meteor-jobboard",
                 text: textm
