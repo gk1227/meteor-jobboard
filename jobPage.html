@@ -1,28 +1,21 @@
 <template name="jobPage">
-    
-
-        {{> header}}
-     <div class="container-fluid">
+    {{> header}}
+    <div class="container-fluid">
      	<div class="container"> 
      		<div class="jobDetailHead">
-     		
-     		<div id="social-share">
-     			{{social-share '["facebook", "twitter"]'}}
-     		</div>	
-     		
-			<h1>{{this.J_Headline}}</h1>
-			<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
-			
-			
-
-			<h5><b>Company Name     :</b>    {{J_Companyname}}</h5>
-			<h5><b>Email     :</b>    {{this.J_CompanyEmail}}</h5>
-			<h5><b>Experience     :</b>    {{J_Experience}}</h5>
-			<h5><b>Job Location     :</b>    {{this.J_Location}}</h5>
-			<h5><b>Website  :</b> <a target="_blank" href= "{{J_CompanyURL}}">{{J_CompanyURL}}</a></h5>
-			<h5><b>Job Type 		: </b>   {{this.J_Jobtype}}</h5>
-			<h5><b>Job Category</u> : </b>{{J_Category}}</h5>
- 		</div>
+		    		<div id="social-share">
+		     			{{social-share '["facebook", "twitter"]'}}
+		     		</div>	
+				<h1>{{this.J_Headline}}</h1>
+				<p class="help-block">Posted at {{J_Date}}-{{J_Month}}-{{J_Year}} </p>
+				<h5><b>Company Name     :</b>    {{J_Companyname}}</h5>
+				<h5><b>Email     :</b>    {{this.J_CompanyEmail}}</h5>
+				<h5><b>Experience     :</b>    {{J_Experience}}</h5>
+				<h5><b>Job Location     :</b>    {{this.J_Location}}</h5>
+				<h5><b>Website  :</b> <a target="_blank" href= "{{J_CompanyURL}}">{{J_CompanyURL}}</a></h5>
+				<h5><b>Job Type 		: </b>   {{this.J_Jobtype}}</h5>
+				<h5><b>Job Category</u> : </b>{{J_Category}}</h5>
+ 			</div>
  			<hr>
  			<div class="jobDetailBody">
 				<h5><b>Job Description:</b></h5>
@@ -38,10 +31,40 @@
  				<p>
  				<a target="_blank" href="{{J_CompanyURL}}"><button type="button" class="btn btn-primary btn-xs" >Show Instructions</button></a>
  				</p>
+ 				<h4>Report this Job</h4>
+ 				<p>
+				  <button type="button" class="btn btn-primary btn-xs btn-report">Click Here</button>
+				</p>
+				<div id="job-report">
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Spam Job
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Fake Job
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+					    Proper details of organization not given
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+					    Job is not properly described
+					  </label>
+					</div>
+					<p>
+					  <button type="button" class="btn btn-primary btn-xs btn-report">Report this Job</button>
+					</p>
+				</div>
  			</div>
  			<hr>
  			<h4>It is {{J_RecruiterOk}} for recruiters, HR consultants, and other intermediaries to contact this employer.</h4>	
          </div>
      </div>    
-        
 </template>

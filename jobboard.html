@@ -1,4 +1,5 @@
 <template name="header">    
+  <div class="container-fluid">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,18 +16,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="{{pathFor 'postSubmit'}}">PostJob</a></li>
+            <li class="active"><a href="{{pathFor 'postSubmit'}}">PostJob</a></li>
             <li>{{#if currentUser}}
                   <a href="{{pathFor 'editPosts'}}">Edit Posts</a>
                 {{/if}}
             </li>
           </ul>
-          <div class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" id="serachText" class="form-control enterEve" placeholder="Search">
             </div>
             <button type="button" id="searchboxClick" class="btn btn-default">Go!</button>
-          </div>
+          </form>
           <ul class="nav navbar-nav navbar-right">
             <!--<div class="login-menu">-->
             <li class="dropdown">
@@ -35,63 +36,49 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-->
-    </nav>    
-        
-    </div>
+    </nav>  
+  </div>    
 </template>
-
 <template name="jobboard">
-    <head>
-      <title>jobboard</title>
-    </head>
-
-    <body>
+  <!--<head>
+    <title>jobboard</title>
+  </head>-->
+  <body>
     <div>
-       {{> header}}  
-        </div>
-        <div class="row-fluid padtop">
-           {{> postDisplay}}
-            
-           </div>
-        
-    </body>
+      {{> header}}  
+    </div>
+    <div class="container-fluid">
+    <div class="row-fluid padtop">
+      {{> postDisplay}}
+    </div>
+  </div>
+  </body>
 </template>
-
-
 <template name="postDisplay">
-
-  {{#if hasJobs}}
-    <div class="container">
-        {{#each Job}}
-       <div class="col-lg-3  col-md-6 col-xs-12 " >
-      <div class="panel  {{panelColor}}">
-            <div class="panel-heading">
-                  <h3 class="panel-title">{{J_Headline}}</h3>
-            </div>
+  <div class="container">
+    {{#each Job}}
+      <div class="col-lg-3  col-md-6 col-xs-12 " >
+        <div class="panel  {{panelColor}}">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{J_Headline}}</h3>
+          </div>
             <div class="panel-body">
-                  <span class="exp">{{J_Experience}}</span>
-                  <p class="help-block"> {{J_Month}}-{{J_Date}} </p>
-                  <h4>{{J_Location}}</h4>
-                  <h5>{{J_Companyname}}</h5>
-                   <h6  align="right"> <a href="{{pathFor 'jobPage'}}">View More</a></h6>
+              <span class="exp">{{J_Experience}}</span>
+              <p class="help-block"> {{J_Month}}-{{J_Date}} </p>
+              <h4>{{J_Location}}</h4>
+              <h5>{{J_Companyname}}</h5>
+              <h6  align="right"> <a href="{{pathFor 'jobPage'}}">View More</a></h6>
             </div>
+        </div>
+    {{/each}}
       </div>
-     {{/each}}
-     {{else}}
-          <h4 align="center">There are no Jobs posted yet.</h4>
-       </div>
-     
-     </div> 
-  {{/if}}
+  </div> 
 
-
-{{#if hasPosts}}
-<div>
+  <div>
     <ul class="pager">
-          <li class="previous" id="prevButton" ><a href="#">&larr; Previous</a></li>
-          <li class="next" id="nextButton" ><a href="#">Next &rarr;</a></li>
+      <li class="previous" id="prevButton" ><a href="#">&larr; Previous</a></li>
+      <li class="next" id="nextButton" ><a href="#">Next &rarr;</a></li>
     </ul>
-</div>
-{{/if}}
+  </div>
 </template>
 
