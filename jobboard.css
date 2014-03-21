@@ -1,21 +1,7 @@
 /* CSS declarations go here */
-/*.header{
-width:100%;
-height:40px;
-/*background-color:#ededed;*/
-/*border-bottom-style:solid;*/
-/*border-color:#d0c7c7;
-margin-left:auto;
-}*/
-/*.login-menu{
-float:right;
-margin-right:20px;
-margin-top:8px;
-}*/
-.navbar{
-    margin-bottom:0px;
+body{
+    background-color : #ebeae8;
 }
-
 
 table {
     border-collapse: collapse;
@@ -28,7 +14,7 @@ td {
 
 .padleft
 {
-    margin-left: 7%%;
+    margin-left: 7%;
     margin-right: 17%;
 }
 .panel-body
@@ -118,32 +104,27 @@ transition: all .2s ease-in-out;
     list-style-type: none;
     padding-right: 20px;
 }
-/*.heading-content{
-float:left;
-padding:0 20px;
-margin-top:8px;
-}
-.heading-content a{
-    padding-right:20px;
-    text-decoration:none;
-    font-size:16px;
-    color:#fff;
-}*/
+
  #login-dropdown-list{
 position:absolute;
 width:250px;
 height:230px;
 } 
+.login-link-text{
+    
+    font-size: 18px;
+}
 .container
 {
     padding-left: 0px;
     padding-right: 0px;
+
     
 }
 
-/*.container-fluid{
+.container-fluid{
     background-color : #ebeae8;
-}*/
+}
  .containers{
     background-color : #000;
     margin-right:50px;
@@ -170,7 +151,7 @@ font-weight:bold;
 #social-share{
     float:right;
     position:relative;
-    margin-right:20px;
+    margin:70px 20px 0px 0px;
 }
 
 .sticker , .sticker h4, .sticker h6
@@ -178,8 +159,6 @@ font-weight:bold;
     background:#3e9cbf;
     font: bold 18px Oswald, sans-serif;
     color:#fff;
-    
-    
 }
 
 .sticker a 
@@ -197,7 +176,7 @@ font-weight:bold;
     padding-top: 15px;
     /*padding-left: 5%;*/
     position: absolute;
-    margin:0px 50px 0px 50px;
+    margin:50px 50px 0px 125px;
 }
 
 .poabs
@@ -208,12 +187,22 @@ font-weight:bold;
 .jobDetailHead, .jobDetailBody{
     padding-left :30px;
 }
+.jobDetailHead h1{
+    padding-top:45px;
+}
+
  
 .jobDetailApply{
     padding-left :30px;
 }
 .hidden {
   display:none;
+}
+#job-report{
+    display: none;
+    padding :8px;
+    border :1px solid black;
+    width : 320px;
 }
 
 

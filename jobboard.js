@@ -5,7 +5,6 @@ var searchCriteria = {};
 
 
 Router.map(function(){
-
     this.route('jobboard',{path:'/'});
     this.route('postSubmit', {path: '/submit' });
     this.route('editPosts', {path:'/editPosts/'});
@@ -22,7 +21,6 @@ Router.map(function(){
         });
 });
 
-
 if (Meteor.isClient) {
       
     Meteor.startup(function()
@@ -34,41 +32,51 @@ if (Meteor.isClient) {
             Meteor.subscribe('Jobs');
         });
 
-        /*EasySearch.createSearchIndex('jobs', {
-            'collection'    : Jobs,         // instanceof Meteor.Collection
-            'field'         : 'J_Headline',  // can also be an array of fields
-            'limit'         : 20,           // default: 10
-            });
-        });*/
     });
             
     function serachJob(){
-
         var search_text=document.getElementById('serachText').value;
-        console.log(search_text);
+        //console.log(search_text);
         var search = new RegExp(search_text, 'i');
-        // searchCriteria = {'J_Headline': search};
         searchCriteria={ $or: [{ J_Headline: search },{ J_Location:search  }] };
         _deps.changed();
+        
     }
     
     Template.header.events({
+        /*if(window.event.clientX < 40 && window.event.clientY < 0)
+            {
+                window.history.go(-1);
+            }
+            else
+            {
+                //alert("Browser refresh button is clicked...");
+            }*/
         'click #searchboxClick':function(){
-            Router.go("jobboard");
+            //Router.go("jobboard");
             console.log("click event triggered")
             serachJob();
+
+            if(window.event.clientX < 40 && window.event.clientY < 0)
+            {
+                console.log("back button pressed");
+                window.location.reload();
+            }
+            
+            /*if(history.length) {
+                window.location.reload();
+            }*/
 
         },
         'keypress input.enterEve':function(evt){
             if(evt.which===13)
             {
-                Router.go("jobboard");
+                //Router.go("jobboard");
                 console.log("Enter event triggered")
                 serachJob();
             }
         },
         'keyup #serachText':function(){
-
                 var s_txt=document.getElementById('serachText').value;
                 //console.log("focus event");
                 console.log(s_txt);
@@ -86,7 +94,7 @@ if (Meteor.isClient) {
             searchCriteria={};
              _deps.changed();
         }
-
+        
     });
     Template.postSubmit.events({
         'click .formsubmit': function(event){
@@ -108,8 +116,7 @@ if (Meteor.isClient) {
                 relocationAssistanceAvailable = $('input[name="relocationAssistanceAvailable"]')[0].checked;
                 
                 jobdescription = $('#jobDescription').val();
-                //console.log(jobdescription);
-                
+                                
                 jobPerks = $('#jobPerks')[0].checked;
                 if (jobPerks) {
                     perksDescription = $('#perksDescription').val();
@@ -123,20 +130,7 @@ if (Meteor.isClient) {
                 jobCollaborators = $('input[name="jobCollaborators"]').val();
                 recruiterOk = $('input[name="recruiterOk"]:checked').val();
 
-                    /*jQuery.validator.setDefaults({
-                    debug: true,
-                    success: "valid"        
-                    });
-                    var form = $( "#myform" );
-                    form.validate();
-                    $( "button" ).click(function() {
-                      alert( "Valid: " + form.valid() );
-                    });*/
                     var formx = $( "#myform input:blank" );
-                    //formxlen = formx.length;
-                    /*for(var i=0; i< formx.length;i++){
-                        $( "formx input:blank" ).css( "border", "3px solid red" );
-                    }*/
                     function valfunction(){
                     if(jobHeadline==="")
                         $( "#Headline" ).css( "border", "1px solid red" );                    
@@ -154,7 +148,18 @@ if (Meteor.isClient) {
                         $( "#inputEmail3" ).css( "border", "1px solid red" );
                     }
                     valfunction.call()
-                    
+
+                    function checkEmail() {
+                        var companyEmail = document.getElementById('inputEmail3').value;
+                        var atpos=companyEmail.indexOf("@");
+                        var dotpos=companyEmail.lastIndexOf(".");
+                        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=companyEmail.length)
+                        {
+                            alert("Not a valid e-mail address");
+                        return false;
+                        }
+                    }
+                    checkEmail.call()
 
                 if(companyURL.indexOf("http") != -1)
                 {
@@ -178,12 +183,11 @@ if (Meteor.isClient) {
                              J_Companyname: companyName, J_CompanyURL:companyURL,J_CompanyEmail:companyEmail, 
                              J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk,createdAt:dat,J_Date:date,J_Month:month,J_Year:year,owner:u_id,version:1},function(e,r)
                              {
-                                
+                               
                                Router.go('jobPage', {_id: r});
-                             });  
-                  
-              }
-          }
+                            });  
+                }
+                }
           else
           {
             alert("URL must contain http:// or https://");
@@ -193,10 +197,8 @@ if (Meteor.isClient) {
             var uid=Meteor.userId;
             Meteor.call('sendEmail',uid); 
             console.log(Meteor.userId());
-            
-           
             alert("Your accounts is not verified Yet");
-          }
+            }
           }
           else
           {
@@ -273,14 +275,11 @@ if (Meteor.isClient) {
             Session.set("start",start);
             Session.set("end",end);
         }
-         
     }
    });
-
     
     Template.postDisplay.helpers({
         Job:function(){
-
              _deps.depend();            
 
            var jobs= Jobs.find(searchCriteria,{sort: {createdAt: -1}}).fetch();
@@ -421,6 +420,17 @@ if (Meteor.isClient) {
                 console.log(this.J_Jobtype);
             }
     });
+    
+    Template.jobPage.events({
+        'click .btn-report': function(){
+            console.log("Click triggered");
+           var repo_type= $( "#job-report" ).toggle();
+        },
+        'click .report':function(){
+            console.log(this._id);
+            Meteor.call('sendRepoEmail', this._id, function (error, result) {});
+        }
+    });
 }
 
 /************************Client Ends***********************************************************/
@@ -446,9 +456,15 @@ if (Meteor.isServer) {
     });
 
     Meteor.methods({
-        sendEmail: function (to) {
-                 
-        Accounts.sendVerificationEmail(to);
+        sendRepoEmail: function (jobid) {
+                var textm="this"+jobid+ "job is reported as fake";
+        Email.send({
+                to: "dronavalli.sasi@gmail.com",
+                from: "info@redesygn.com",
+                subject: "Fake Job in meteor-jobboard",
+                text: textm
+            });
+        console.log("Email sent") ;
         }
     });
    
