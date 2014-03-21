@@ -179,7 +179,7 @@ if (Meteor.isClient) {
                              J_Collaborators:jobCollaborators,J_RecruiterOk:recruiterOk,createdAt:dat,J_Date:date,J_Month:month,J_Year:year,owner:u_id,version:1},function(e,r)
                              {
                                 
-                                Router.go('jobPage', {_id: r});
+                               Router.go('jobPage', {_id: r});
                              });  
                   
               }
